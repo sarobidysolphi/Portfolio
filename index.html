@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Sarobidy Solphi</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', sans-serif; background: #f4f7fc; color: #333; line-height: 1.6; }
+        
+        /* --- CORRECTION DU HEADER (Photo à côté du texte) --- */
+        header { background: #1a2a3a; color: white; padding: 40px 20px; }
+        
+        .header-content {
+            display: flex;             /* Met les éléments côte à côte */
+            align-items: center;       /* Aligne verticalement au centre */
+            justify-content: center;   /* Centre horizontalement */
+            gap: 30px;                 /* Espace entre la photo et le texte */
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .profile-pic {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            border: 3px solid white;
+            object-fit: cover;
+        }
+
+        .header-text h1 {
+            margin: 0 0 5px 0;
+            font-size: 2.5rem;
+            text-align: left;
+        }
+
+        .header-text p {
+            margin: 0;
+            font-size: 1.2rem;
+            color: #aac9e6;
+            text-align: left;
+        }
+
+        /* --- RESTE DU CSS (inchangé) --- */
+        .container { max-width: 1000px; margin: 30px auto; padding: 0 20px; }
+        section { background: white; padding: 30px; margin-bottom: 25px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+        h2 { color: #1a2a3a; border-bottom: 3px solid #1a2a3a; padding-bottom: 10px; margin-bottom: 20px; }
+        .skills-grid, .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
+        .skill-item, .project-item { background: #f0f4fa; padding: 15px; border-radius: 8px; text-align: center; }
+        .project-item a { color: #1a2a3a; font-weight: bold; text-decoration: none; }
+        .project-item a:hover { text-decoration: underline; }
+        .contact { text-align: center; }
+        .contact a { color: #1a2a3a; font-weight: bold; text-decoration: none; }
+        .btn { display: inline-block; background: #1a2a3a; color: white; padding: 10px 25px; border-radius: 30px; text-decoration: none; margin-top: 15px; }
+        .btn:hover { background: #2c4a6a; }
+        footer { text-align: center; padding: 20px; color: #666; }
+
+        /* --- ADAPTATION POUR MOBILE --- */
+        @media (max-width: 600px) {
+            .header-content {
+                flex-direction: column; /* Remet en colonne sur téléphone */
+                gap: 15px;
+            }
+            .header-text h1, .header-text p {
+                text-align: center; /* Centre le texte sur téléphone */
+            }
+            header h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-content">
+        <img src="ton_photo.jpg" alt="Sarobidy Solphi" class="profile-pic">
+        <div class="header-text">
+            <h1>Sarobidy Solphi</h1>
+            <p>Stagiaire Développeur d'Application</p>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+
+    <section>
+        <h2>À propos</h2>
+        <p>Étudiant en L2 à l'ENI Fianarantsoa, passionné par le développement d'applications. Je recherche un stage de 3 mois à partir de septembre 2026 pour contribuer à des projets concrets.</p>
+    </section>
+
+    <section>
+        <h2>Compétences techniques</h2>
+        <div class="skills-grid">
+            <div class="skill-item">C#, PHP, Java</div>
+            <div class="skill-item">MySQL</div>
+            <div class="skill-item">React, JavaScript, HTML, CSS</div>
+            <div class="skill-item">GitHub, VS Code, NetBeans</div>
+            <div class="skill-item">IA pour productivité</div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Projets réalisés</h2>
+        <div class="projects-grid">
+            <div class="project-item">
+                <strong>Location de films</strong><br>
+                C# + MySQL<br>
+                <a href="https://github.com/sarobidysolphi" target="_blank">Voir sur GitHub</a>
+            </div>
+            <div class="project-item">
+                <strong>Gestion d'emploi du temps</strong><br>
+                PHP + MySQL<br>
+                <a href="https://github.com/sarobidysolphi" target="_blank">Voir sur GitHub</a>
+            </div>
+            <div class="project-item">
+                <strong>Station d'essence</strong><br>
+                Java + MySQL<br>
+                <a href="https://github.com/sarobidysolphi" target="_blank">Voir sur GitHub</a>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>CV</h2>
+        <a href="CV_Stage_2.pdf" download class="btn">Télécharger mon CV (PDF)</a>
+    </section>
+
+    <section class="contact">
+        <h2>Contact</h2>
+        <p>📧 <a href="mailto:sarobidy600@gmail.com">sarobidy600@gmail.com</a></p>
+        <p>📞 <a href="tel:+261342029520">+261 34 20 295 20</a></p>
+        <p>📍 Tanambao, Fianarantsoa</p>
+    </section>
+
+</div>
+
+<footer>
+    &copy; 2026 Sarobidy Solphi - Portfolio
+</footer>
+
+</body>
+</html>
