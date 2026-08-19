@@ -490,75 +490,97 @@ a {
 .tag-netbeans { background: rgba(244, 114, 182, 0.1); color: #f472b6; border-color: rgba(244, 114, 182, 0.2); }
 .tag-ia { background: rgba(167, 139, 250, 0.15); color: #a78bfa; border-color: rgba(167, 139, 250, 0.3); }
 
-/* --- Projects --- */
+/* --- Projects (Video Cards) --- */
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 25px;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
 }
 
-.project-card {
-    position: relative;
+.project-video-card {
+    background: var(--bg-card);
+    border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: var(--radius);
     overflow: hidden;
-    min-height: 260px;
-    display: flex;
-    align-items: flex-end;
     transition: all 0.3s ease;
-    cursor: pointer;
 }
 
-.project-card:hover {
+.project-video-card:hover {
     transform: translateY(-8px);
-    box-shadow: var(--shadow);
+    border-color: rgba(108, 60, 224, 0.3);
+    box-shadow: 0 12px 40px rgba(108, 60, 224, 0.2);
 }
 
-.project-gradient {
+.video-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #000;
+    overflow: hidden;
+}
+
+.video-wrapper video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.play-btn {
     position: absolute;
     inset: 0;
-    opacity: 0.9;
-    transition: opacity 0.3s ease;
-}
-
-.gradient-1 { background: linear-gradient(135deg, #6c3ce0, #a855f7, #f472b6); }
-.gradient-2 { background: linear-gradient(135deg, #06d6a0, #38bdf8, #818cf8); }
-.gradient-3 { background: linear-gradient(135deg, #f472b6, #fbbf24, #f97316); }
-
-.project-card:hover .project-gradient {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.35);
+    border: none;
+    color: white;
+    font-size: 3rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
     opacity: 1;
 }
 
-.project-content {
-    position: relative;
-    z-index: 1;
-    padding: 30px;
-    width: 100%;
-    background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+.play-btn:hover {
+    background: rgba(108, 60, 224, 0.5);
+    font-size: 3.5rem;
 }
 
-.project-content h3 {
-    font-size: 1.3rem;
+.play-btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.project-info {
+    padding: 22px 25px;
+}
+
+.project-info h3 {
+    font-size: 1.2rem;
     font-weight: 700;
-    margin-bottom: 5px;
+    margin-bottom: 4px;
 }
 
 .project-tech {
-    color: rgba(255, 255, 255, 0.8);
-    font-size: 0.9rem;
-    margin-bottom: 12px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 14px;
 }
 
-.project-link {
-    font-weight: 600;
-    font-size: 0.9rem;
-    color: white;
-    transition: all 0.3s ease;
+.github-link {
     display: inline-flex;
     align-items: center;
-    gap: 5px;
+    gap: 6px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--primary-light);
+    transition: all 0.3s ease;
 }
 
-.project-link:hover {
+.github-link:hover {
+    color: var(--text);
     gap: 10px;
     text-decoration: underline;
 }
@@ -718,10 +740,6 @@ footer {
 
     .projects-grid {
         grid-template-columns: 1fr;
-    }
-
-    .project-card {
-        min-height: 200px;
     }
 
     .cv-content {

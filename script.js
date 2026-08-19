@@ -89,4 +89,31 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(type, 800);
     }
 
+    // --- Video Play/Pause ---
+    document.querySelectorAll('.project-video-card').forEach(card => {
+        const video = card.querySelector('video');
+        const playBtn = card.querySelector('.play-btn');
+
+        if (!video || !playBtn) return;
+
+        playBtn.addEventListener('click', () => {
+            video.play();
+            playBtn.classList.add('hidden');
+        });
+
+        video.addEventListener('click', () => {
+            if (video.paused) {
+                video.play();
+                playBtn.classList.add('hidden');
+            } else {
+                video.pause();
+                playBtn.classList.remove('hidden');
+            }
+        });
+
+        video.addEventListener('ended', () => {
+            playBtn.classList.remove('hidden');
+        });
+    });
+
 });
