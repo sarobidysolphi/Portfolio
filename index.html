@@ -3,140 +3,180 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+    <meta name="description" content="Portfolio de AINA Sarobidy Solphi - Developpeur d'Application en stage">
+    <meta name="theme-color" content="#6c3ce0">
     <title>Portfolio - Solphi</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', sans-serif; background: #f4f7fc; color: #333; line-height: 1.6; }
-        
-        /* --- CORRECTION DU HEADER (Photo à côté du texte) --- */
-        header { background: #1a2a3a; color: white; padding: 40px 20px; }
-        
-        .header-content {
-            display: flex;             /* Met les éléments côte à côte */
-            align-items: center;       /* Aligne verticalement au centre */
-            justify-content: center;   /* Centre horizontalement */
-            gap: 30px;                 /* Espace entre la photo et le texte */
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .profile-pic {
-            width: 130px;
-            height: 130px;
-            border-radius: 50%;
-            border: 3px solid white;
-            object-fit: cover;
-        }
-
-        .header-text h1 {
-            margin: 0 0 5px 0;
-            font-size: 2.5rem;
-            text-align: left;
-        }
-
-        .header-text p {
-            margin: 0;
-            font-size: 1.2rem;
-            color: #aac9e6;
-            text-align: left;
-        }
-
-        /* --- RESTE DU CSS (inchangé) --- */
-        .container { max-width: 1000px; margin: 30px auto; padding: 0 20px; }
-        section { background: white; padding: 30px; margin-bottom: 25px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
-        h2 { color: #1a2a3a; border-bottom: 3px solid #1a2a3a; padding-bottom: 10px; margin-bottom: 20px; }
-        .skills-grid, .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
-        .skill-item, .project-item { background: #f0f4fa; padding: 15px; border-radius: 8px; text-align: center; }
-        .project-item a { color: #1a2a3a; font-weight: bold; text-decoration: none; }
-        .project-item a:hover { text-decoration: underline; }
-        .contact { text-align: center; }
-        .contact a { color: #1a2a3a; font-weight: bold; text-decoration: none; }
-        .btn { display: inline-block; background: #1a2a3a; color: white; padding: 10px 25px; border-radius: 30px; text-decoration: none; margin-top: 15px; }
-        .btn:hover { background: #2c4a6a; }
-        footer { text-align: center; padding: 20px; color: #666; }
-
-        /* --- ADAPTATION POUR MOBILE --- */
-        @media (max-width: 600px) {
-            .header-content {
-                flex-direction: column; /* Remet en colonne sur téléphone */
-                gap: 15px;
-            }
-            .header-text h1, .header-text p {
-                text-align: center; /* Centre le texte sur téléphone */
-            }
-            header h1 { font-size: 2rem; }
-        }
-    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header>
-    <div class="header-content">
-        <img src="cv 2.JPG" alt="Sarobidy Solphi" class="profile-pic">
-        <div class="header-text">
-            <h1> AINA Sarobidy Solphi</h1>
-            <p>Stagiaire Développeur d'Application</p>
+    <nav class="navbar" id="navbar">
+        <div class="nav-brand">Solphi</div>
+        <button class="nav-toggle" id="navToggle" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#about">A propos</a></li>
+            <li><a href="#skills">Competences</a></li>
+            <li><a href="#projects">Projets</a></li>
+            <li><a href="#cv">CV</a></li>
+            <li><a href="#contact" class="nav-btn">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero" id="hero">
+        <div class="hero-bg-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
         </div>
-    </div>
-</header>
-
-<div class="container">
-
-    <section>
-        <h2>À propos</h2>
-        <p>Étudiant en L2 à l'ENI Fianarantsoa, je suis passionné par la creation d'applications web et mobiles. J'aimerai transformer des idées en code fonctionnel, que ce soit avec C#, PHP, ou JAVA. Actuellement a la recherche d'un stage de 3 mois a compter a partir du mois de Septembre 2026, je souhaite mettre mes comptetences au service de projets concrets et apprendre au contact d'equipes experimentées. </p>
-    </section>
-
-    <section>
-        <h2>Compétences techniques</h2>
-        <div class="skills-grid">
-            <div class="skill-item">C#, PHP, Java</div>
-            <div class="skill-item">MySQL</div>
-            <div class="skill-item">React, JavaScript, HTML, CSS</div>
-            <div class="skill-item">GitHub, VS Code, NetBeans</div>
-            <div class="skill-item">IA pour productivité</div>
-        </div>
-    </section>
-
-    <section>
-        <h2>Projets réalisés</h2>
-        <div class="projects-grid">
-            <div class="project-item">
-                <strong>Location de films</strong><br>
-                C# + MySQL<br>
-                <a href="https://github.com/sarobidysolphi" target="_blank">Voir sur GitHub</a>
+        <div class="hero-content">
+            <div class="hero-image reveal">
+                <img src="cv 2.JPG" alt="Sarobidy Solphi" class="profile-pic">
+                <div class="profile-ring"></div>
             </div>
-            <div class="project-item">
-                <strong>Gestion d'emploi du temps</strong><br>
-                PHP + MySQL<br>
-                <a href="https://github.com/sarobidysolphi" target="_blank">Voir sur GitHub</a>
-            </div>
-            <div class="project-item">
-                <strong>Station d'essence</strong><br>
-                Java + MySQL<br>
-                <a href="https://github.com/sarobidysolphi" target="_blank">Voir sur GitHub</a>
+            <div class="hero-text reveal">
+                <p class="hero-greeting">Bonjour, je suis</p>
+                <h1>AINA Sarobidy <span class="highlight">Solphi</span></h1>
+                <p class="hero-title">Stagiaire Developpeur d'Application</p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary">Voir mes projets</a>
+                    <a href="#contact" class="btn btn-outline">Me contacter</a>
+                </div>
             </div>
         </div>
-    </section>
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+        </div>
+    </header>
 
-    <section>
-        <h2>CV</h2>
-        <a href="CV stage.pdf" download class="btn">Télécharger mon CV (PDF)</a>
-    </section>
+    <main class="container">
 
-    <section class="contact">
-        <h2>Contact</h2>
-        <p>📧 <a href="mailto:sarobidy600@gmail.com">sarobidy600@gmail.com</a></p>
-        <p>📞 <a href="tel:+261342029520">+261 34 20 295 20</a></p>
-        <p>📍 Tanambao, Fianarantsoa</p>
-    </section>
+        <section id="about" class="section">
+            <h2 class="section-title reveal">A propos</h2>
+            <div class="about-content reveal">
+                <p>Etudiant en L2 a l'ENI Fianarantsoa, je suis passionne par la creation d'applications web et mobiles. J'aimerai transformer des idees en code fonctionnel, que ce soit avec C#, PHP, ou JAVA. Actuellement a la recherche d'un stage de 3 mois a compter a partir du mois de Septembre 2026, je souhaite mettre mes competences au service de projets concrets et apprendre au contact d'equipes experimentees.</p>
+            </div>
+        </section>
 
-</div>
+        <section id="skills" class="section">
+            <h2 class="section-title reveal">Competences techniques</h2>
+            <div class="skills-grid">
+                <div class="skill-card reveal" data-delay="0">
+                    <div class="skill-icon">&#128187;</div>
+                    <h3>Langages</h3>
+                    <div class="skill-tags">
+                        <span class="tag tag-csharp">C#</span>
+                        <span class="tag tag-php">PHP</span>
+                        <span class="tag tag-java">Java</span>
+                    </div>
+                </div>
+                <div class="skill-card reveal" data-delay="100">
+                    <div class="skill-icon">&#128202;</div>
+                    <h3>Base de donnees</h3>
+                    <div class="skill-tags">
+                        <span class="tag tag-mysql">MySQL</span>
+                    </div>
+                </div>
+                <div class="skill-card reveal" data-delay="200">
+                    <div class="skill-icon">&#127760;</div>
+                    <h3>Web Frontend</h3>
+                    <div class="skill-tags">
+                        <span class="tag tag-react">React</span>
+                        <span class="tag tag-js">JavaScript</span>
+                        <span class="tag tag-html">HTML</span>
+                        <span class="tag tag-css">CSS</span>
+                    </div>
+                </div>
+                <div class="skill-card reveal" data-delay="300">
+                    <div class="skill-icon">&#128295;</div>
+                    <h3>Outils</h3>
+                    <div class="skill-tags">
+                        <span class="tag tag-github">GitHub</span>
+                        <span class="tag tag-vscode">VS Code</span>
+                        <span class="tag tag-netbeans">NetBeans</span>
+                    </div>
+                </div>
+                <div class="skill-card reveal" data-delay="400">
+                    <div class="skill-icon">&#129302;</div>
+                    <h3>Productivite</h3>
+                    <div class="skill-tags">
+                        <span class="tag tag-ia">IA pour productivite</span>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-<footer>
-    &copy; 2026 Sarobidy Solphi - Portfolio
-</footer>
+        <section id="projects" class="section">
+            <h2 class="section-title reveal">Projets realises</h2>
+            <div class="projects-grid">
+                <div class="project-card reveal" data-delay="0">
+                    <div class="project-gradient gradient-1"></div>
+                    <div class="project-content">
+                        <h3>Location de films</h3>
+                        <p class="project-tech">C# + MySQL</p>
+                        <a href="https://github.com/sarobidysolphi" target="_blank" class="project-link">Voir sur GitHub &#8594;</a>
+                    </div>
+                </div>
+                <div class="project-card reveal" data-delay="150">
+                    <div class="project-gradient gradient-2"></div>
+                    <div class="project-content">
+                        <h3>Gestion d'emploi du temps</h3>
+                        <p class="project-tech">PHP + MySQL</p>
+                        <a href="https://github.com/sarobidysolphi" target="_blank" class="project-link">Voir sur GitHub &#8594;</a>
+                    </div>
+                </div>
+                <div class="project-card reveal" data-delay="300">
+                    <div class="project-gradient gradient-3"></div>
+                    <div class="project-content">
+                        <h3>Station d'essence</h3>
+                        <p class="project-tech">Java + MySQL</p>
+                        <a href="https://github.com/sarobidysolphi" target="_blank" class="project-link">Voir sur GitHub &#8594;</a>
+                    </div>
+                </div>
+            </div>
+        </section>
 
+        <section id="cv" class="section">
+            <h2 class="section-title reveal">CV</h2>
+            <div class="cv-content reveal">
+                <p>Telechargez mon CV pour en savoir plus sur mon parcours.</p>
+                <a href="CV stage.pdf" download class="btn btn-primary btn-lg">Telecharger mon CV (PDF) &#128196;</a>
+            </div>
+        </section>
+
+        <section id="contact" class="section">
+            <h2 class="section-title reveal">Contact</h2>
+            <div class="contact-grid reveal">
+                <a href="mailto:sarobidy600@gmail.com" class="contact-card">
+                    <span class="contact-icon">&#9993;</span>
+                    <span class="contact-label">Email</span>
+                    <span class="contact-value">sarobidy600@gmail.com</span>
+                </a>
+                <a href="tel:+261342029520" class="contact-card">
+                    <span class="contact-icon">&#128222;</span>
+                    <span class="contact-label">Telephone</span>
+                    <span class="contact-value">+261 34 20 295 20</span>
+                </a>
+                <div class="contact-card">
+                    <span class="contact-icon">&#128205;</span>
+                    <span class="contact-label">Localisation</span>
+                    <span class="contact-value">Tanambao, Fianarantsoa</span>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Sarobidy Solphi - Portfolio</p>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
