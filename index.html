@@ -118,10 +118,7 @@
 
                 <div class="project-video-card reveal" data-delay="0">
                     <div class="video-wrapper">
-                        <video muted loop playsinline poster="cv 2.JPG">
-                            <source src="projets/location-films.mp4" type="video/mp4">
-                        </video>
-                        <button class="play-btn" aria-label="Lire la video">&#9654;</button>
+                        <img src="projets/location-films.jpg" alt="Capture - Location de films">
                     </div>
                     <div class="project-info">
                         <h3>Location de films</h3>
@@ -132,10 +129,7 @@
 
                 <div class="project-video-card reveal" data-delay="150">
                     <div class="video-wrapper">
-                        <video muted loop playsinline poster="cv 2.JPG">
-                            <source src="projets/emploi-du-temps.mp4" type="video/mp4">
-                        </video>
-                        <button class="play-btn" aria-label="Lire la video">&#9654;</button>
+                        <img src="projets/emploi-du-temps.jpg" alt="Capture - Gestion d'emploi du temps">
                     </div>
                     <div class="project-info">
                         <h3>Gestion d'emploi du temps</h3>
@@ -146,10 +140,7 @@
 
                 <div class="project-video-card reveal" data-delay="300">
                     <div class="video-wrapper">
-                        <video muted loop playsinline poster="cv 2.JPG">
-                            <source src="projets/station-essence.mp4" type="video/mp4">
-                        </video>
-                        <button class="play-btn" aria-label="Lire la video">&#9654;</button>
+                        <img src="projets/station-essence.jpg" alt="Capture - Station d'essence">
                     </div>
                     <div class="project-info">
                         <h3>Station d'essence</h3>
@@ -195,6 +186,36 @@
     <footer>
         <p>&copy; 2026 Sarobidy Solphi - Portfolio</p>
     </footer>
+
+    <!-- ===== Widget Messenger ===== -->
+    <button id="chatToggle" class="chat-toggle" aria-label="Ouvrir le chat">
+        <span class="chat-toggle-icon">&#128172;</span>
+    </button>
+
+    <div id="chatWindow" class="chat-window">
+        <div class="chat-header">
+            <div class="chat-header-info">
+                <span class="chat-avatar">&#128100;</span>
+                <span class="chat-title">Solphi</span>
+                <span class="chat-status">&#9679; en ligne</span>
+            </div>
+            <button id="chatClose" class="chat-close" aria-label="Fermer le chat">&times;</button>
+        </div>
+
+        <div id="chatMessages" class="chat-messages">
+            <div class="chat-message bot">
+                <p>Bonjour ! 👋 Je suis Solphi. Laissez-moi un message et je vous répondrai au plus vite.</p>
+            </div>
+        </div>
+
+        <form id="chatForm" class="chat-form">
+            <input type="text" id="chatName" placeholder="Votre nom" class="chat-input-name" autocomplete="name">
+            <input type="text" id="chatMessage" placeholder="Ecrivez votre message..." class="chat-input" autocomplete="off" required>
+            <input type="hidden" name="_subject" value="Nouveau message depuis votre Portfolio">
+            <button type="submit" id="chatSend" class="chat-send" aria-label="Envoyer">&#10148;</button>
+        </form>
+    </div>
+    <!-- ===== Fin Widget Messenger ===== -->
 
     <script src="script.js"></script>
 </body>

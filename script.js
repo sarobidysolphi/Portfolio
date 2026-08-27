@@ -2,6 +2,15 @@
 // PORTFOLIO SOLPHI - Interactions
 // ============================================
 
+// =====================================================
+// !!! A REMPLACER PAR VOTRE IDENTIFIANT FORMSPREE !!!
+// 1. Creez un compte gratuit sur https://formspree.io
+// 2. Creez un formulaire
+// 3. Copiez l'URL du formulaire (ex: https://formspree.io/f/xabc1234)
+// 4. Collez-la ici dans FORMSPREE_URL ci-dessous.
+// =====================================================
+const FORMSPREE_URL = "https://formspree.io/f/mgaewgzz";
+
 document.addEventListener('DOMContentLoaded', () => {
 
     // --- Mobile Navigation ---
@@ -89,31 +98,76 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(type, 800);
     }
 
-    // --- Video Play/Pause ---
-    document.querySelectorAll('.project-video-card').forEach(card => {
-        const video = card.querySelector('video');
-        const playBtn = card.querySelector('.play-btn');
+    // ============================================
+    // Widget Messenger
+    // ============================================
+    const chatToggle = document.getElementById('chatToggle');
+    const chatClose = document.getElementById('chatClose');
+    const chatWindow = document.getElementById('chatWindow');
+    const chatForm = document.getElementById('chatForm');
+    const chatName = document.getElementById('chatName');
+    const chatMessage = document.getElementById('chatMessage');
+    const chatSend = document.getElementById('chatSend');
+    const chatMessages = document.getElementById('chatMessages');
 
-        if (!video || !playBtn) return;
+    const openChat = () => chatWindow.classList.add('open');
+    const closeChat = () => chatWindow.classList.remove('open');
 
-        playBtn.addEventListener('click', () => {
-            video.play();
-            playBtn.classList.add('hidden');
-        });
+    chatToggle.addEventListener('click', openChat);
+    chatClose.addEventListener('click', closeChat);
 
-        video.addEventListener('click', () => {
-            if (video.paused) {
-                video.play();
-                playBtn.classList.add('hidden');
+    const addUserMessage = (name, text) => {
+        const div = document.createElement('div');
+        div.className = 'chat-message user';
+        const p = document.createElement('p');
+        p.innerHTML = `${escapeHtml(text)}<span class="msg-meta">${escapeHtml(name || 'Vous')}</span>`;
+        div.appendChild(p);
+        chatMessages.appendChild(div);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    };
+
+    const escapeHtml = (str) => {
+        const div = document.createElement('div');
+        div.textContent = str;
+        return div.innerHTML;
+    };
+
+    chatForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const name = chatName.value.trim();
+        const message = chatMessage.value.trim();
+        if (!message) return;
+
+        addUserMessage(name, message);
+        chatMessage.value = '';
+
+        const payload = {
+            name: name,
+            message: message,
+            _subject: 'Nouveau message depuis votre Portfolio'
+        };
+
+        chatSend.disabled = true;
+        chatSend.classList.add('loading');
+
+        try {
+            const res = await fetch(FORMSPREE_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            if (res.ok) {
+                addUserMessage('', '✅ Message envoye ! Je vous repondrai au plus vite.');
             } else {
-                video.pause();
-                playBtn.classList.remove('hidden');
+                addUserMessage('', '⚠️ Oups, une erreur est survenue. Reessayez.');
             }
-        });
-
-        video.addEventListener('ended', () => {
-            playBtn.classList.remove('hidden');
-        });
+        } catch (err) {
+            addUserMessage('', '⚠️ Envoi impossible. Verifiez votre connexion.');
+        } finally {
+            chatSend.disabled = false;
+            chatSend.classList.remove('loading');
+        }
     });
-
 });
