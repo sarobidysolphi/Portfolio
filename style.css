@@ -773,7 +773,7 @@ footer {
 
 .chat-window {
     position: fixed;
-    top: 100px;
+    top: 170px;
     right: 25px;
     width: 360px;
     max-height: 520px;
@@ -965,11 +965,22 @@ footer {
     pointer-events: none;
 }
 
+.contact-card.chat-contact-card {
+    background: linear-gradient(135deg, rgba(108, 60, 224, 0.08), rgba(155, 77, 255, 0.12));
+    border: 1px dashed rgba(108, 60, 224, 0.5);
+    color: #6c3ce0;
+}
+
+.contact-card.chat-contact-card:hover {
+    border-style: solid;
+    background: linear-gradient(135deg, rgba(108, 60, 224, 0.15), rgba(155, 77, 255, 0.2));
+}
+
 @media (max-width: 480px) {
     .chat-window {
         width: calc(100vw - 30px);
         right: 15px;
-        bottom: 92px;
+        top: 150px;
         height: 75vh;
     }
 }

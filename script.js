@@ -116,6 +116,15 @@ document.addEventListener('DOMContentLoaded', () => {
     chatToggle.addEventListener('click', openChat);
     chatClose.addEventListener('click', closeChat);
 
+    const chatContactCard = document.getElementById('chatContactCard');
+    if (chatContactCard) {
+        chatContactCard.addEventListener('click', (e) => {
+            e.preventDefault();
+            openChat();
+            chatWindow.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        });
+    }
+
     const addUserMessage = (name, text) => {
         const div = document.createElement('div');
         div.className = 'chat-message user';
