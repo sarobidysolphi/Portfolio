@@ -13,6 +13,28 @@ const FORMSPREE_URL = "https://formspree.io/f/mgaewgzz";
 
 document.addEventListener('DOMContentLoaded', () => {
 
+    // --- Theme Toggle (Mode Sombre / Clair) ---
+    const themeToggle = document.getElementById('themeToggle');
+    const savedTheme = localStorage.getItem('theme');
+
+    if (savedTheme === 'light') {
+        document.documentElement.setAttribute('data-theme', 'light');
+    }
+
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            const root = document.documentElement;
+            const isLight = root.getAttribute('data-theme') === 'light';
+            if (isLight) {
+                root.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                root.setAttribute('data-theme', 'light');
+                localStorage.setItem('theme', 'light');
+            }
+        });
+    }
+
     // --- Mobile Navigation ---
     const navToggle = document.getElementById('navToggle');
     const navLinks = document.getElementById('navLinks');
@@ -179,4 +201,94 @@ document.addEventListener('DOMContentLoaded', () => {
             chatSend.classList.remove('loading');
         }
     });
+
+    // ============================================
+    // Geolocalisation -> Adresse locale
+    // ============================================
+    // Changez ici vos adresses par ville.
+    // Chaque entree : un ou plusieurs mots-cles de ville vers l'adresse a afficher.
+    const LOCATIONS = [
+        { keys: ['fianarantsoa', 'fianara'], address: 'Tanambao, Fianarantsoa' },
+        { keys: ['ihosy'], address: 'Fanjakamandroso, Ihosy' },
+        { keys: ['antananarivo', 'tana', 'tananarive'], address: 'Tanambao, Fianarantsoa' }
+    ];
+    const DEFAULT_LOCATION = 'Tanambao, Fianarantsoa';
+
+    const contactLocationEl = document.getElementById('contactLocation');
+
+    const findLocation = (city) => {
+        if (!city) return DEFAULT_LOCATION;
+        const lower = city.toLowerCase();
+        for (const loc of LOCATIONS) {
+            if (loc.keys.some(k => lower.includes(k))) {
+                return loc.address;
+            }
+        }
+        return DEFAULT_LOCATION;
+    };
+
+    const detectLocation = () => {
+        if (!navigator.geolocation || !contactLocationEl) return;
+
+        navigator.geolocation.getCurrentPosition(async (pos) => {
+            try {
+                const { latitude, longitude } = pos.coords;
+                const res = await fetch(
+                    `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=fr`
+                );
+                const data = await res.json();
+                const city = data.city || data.locality || data.principalSubdivision || '';
+                contactLocationEl.textContent = findLocation(city);
+            } catch (err) {
+                contactLocationEl.textContent = DEFAULT_LOCATION;
+            }
+        }, () => {
+            contactLocationEl.textContent = DEFAULT_LOCATION;
+        });
+    };
+
+    detectLocation();
+
+    // ============================================
+    // Protection contre les captures d'ecran
+    // (mesures dissuasives - le blocage total est
+    //  techniquement impossible cote navigateur)
+    // ============================================
+    document.addEventListener('contextmenu', (e) => e.preventDefault());
+    document.addEventListener('copy', (e) => e.preventDefault());
+    document.addEventListener('cut', (e) => e.preventDefault());
+    document.addEventListener('paste', (e) => e.preventDefault());
+    document.addEventListener('dragstart', (e) => e.preventDefault());
+
+    document.addEventListener('keydown', (e) => {
+        const blocked = [112, 114, 123, 44];
+        const combo =
+            (e.ctrlKey && (e.key === 'p' || e.key === 'P' || e.key === 's' || e.key === 'S' || e.key === 'u' || e.key === 'U')) ||
+            (e.ctrlKey && e.shiftKey) ||
+            blocked.includes(e.keyCode);
+        if (combo) {
+            e.preventDefault();
+        }
+    });
+
+    // ============================================
+    // Voile de suspicion (perte de focus / onglet cache)
+    // Offusque le contenu en cas de capture probable.
+    // ============================================
+    const blurOverlay = document.getElementById('blurOverlay');
+    if (blurOverlay) {
+        const showBlur = () => blurOverlay.classList.add('active');
+        const hideBlur = () => blurOverlay.classList.remove('active');
+
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                showBlur();
+            } else {
+                hideBlur();
+            }
+        });
+
+        window.addEventListener('blur', showBlur);
+        window.addEventListener('focus', hideBlur);
+    }
 });

@@ -28,24 +28,30 @@
     </nav>
 
     <header class="hero" id="hero">
-        <div class="hero-bg-shapes">
+        <div class="hero-shapes">
             <div class="shape shape-1"></div>
             <div class="shape shape-2"></div>
             <div class="shape shape-3"></div>
         </div>
         <div class="hero-content">
-            <div class="hero-image reveal">
-                <img src="cv 2.JPG" alt="Sarobidy Solphi" class="profile-pic">
-                <div class="profile-ring"></div>
-            </div>
             <div class="hero-text reveal">
                 <p class="hero-greeting">Bonjour, je suis</p>
                 <h1>AINA Sarobidy <span class="highlight">Solphi</span></h1>
                 <p class="hero-title">Stagiaire Developpeur d'Application</p>
+                <div class="hero-social">
+                    <a href="https://www.facebook.com/votre-profil" target="_blank" class="social-icon" aria-label="Facebook">&#120143;</a>
+                    <a href="https://www.instagram.com/votre-profil" target="_blank" class="social-icon" aria-label="Instagram">&#128247;</a>
+                    <a href="https://www.linkedin.com/in/votre-profil" target="_blank" class="social-icon" aria-label="LinkedIn">&#128100;</a>
+                    <a href="https://github.com/sarobidysolphi" target="_blank" class="social-icon" aria-label="GitHub">&#128279;</a>
+                </div>
                 <div class="hero-buttons">
                     <a href="#projects" class="btn btn-primary">Voir mes projets</a>
                     <a href="#contact" class="btn btn-outline">Me contacter</a>
                 </div>
+            </div>
+            <div class="hero-image reveal">
+                <img src="cv 2.JPG" alt="Sarobidy Solphi" class="gallery-pic">
+                <div class="profile-ring"></div>
             </div>
         </div>
         <div class="scroll-indicator">
@@ -176,7 +182,7 @@
                 <div class="contact-card">
                     <span class="contact-icon">&#128205;</span>
                     <span class="contact-label">Localisation</span>
-                    <span class="contact-value">Tanambao, Fianarantsoa</span>
+                    <span class="contact-value" id="contactLocation">Tanambao, Fianarantsoa</span>
                 </div>
                 <a href="#" id="chatContactCard" class="contact-card chat-contact-card">
                     <span class="contact-icon">&#128172;</span>
@@ -193,6 +199,11 @@
     </footer>
 
     <!-- ===== Widget Messenger ===== -->
+    <button class="theme-toggle" id="themeToggle" aria-label="Changer de theme">
+        <span class="theme-icon theme-sun">&#9728;&#65039;</span>
+        <span class="theme-icon theme-moon">&#127769;</span>
+    </button>
+
     <button id="chatToggle" class="chat-toggle" aria-label="Ouvrir le chat">
         <span class="chat-toggle-icon">&#128172;</span>
     </button>
@@ -221,6 +232,11 @@
         </form>
     </div>
     <!-- ===== Fin Widget Messenger ===== -->
+
+    <!-- ===== Voile de suspicion anti-capture ===== -->
+    <div id="blurOverlay" class="blur-overlay">
+        <p>&#128274; Contenu protege</p>
+    </div>
 
     <script src="script.js"></script>
 </body>
